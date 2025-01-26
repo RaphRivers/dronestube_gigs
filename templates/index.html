@@ -21,16 +21,13 @@
             <div>
                 <h2 class="text-center"> Our Gigs </h2>
                 <div> 
-                    <!-- Loop through the gigs -->
                     {% for gig in gigs %}
-                        <div>
-                            {{ gig['title'] }}
-                        </div>
+                       {% include 'jobitems.html' %} <!-- Job items goes here -->
                     {% endfor %}
                 </div>
                 
                 <div class="text-center"">
-                    <button class="btn btn-primary mt-4 mb-4" type="submit">See More Gigs!</button> 
+                    <button class="btn btn-primary mt-4 mb-4" type="submit">Load More Gigs!</button> 
                 </div>
             </div> 
         </div>

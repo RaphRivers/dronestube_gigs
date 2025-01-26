@@ -1,0 +1,25 @@
+<div class="border-bottom" style="margin-bottom: 16px; padding-bottom: 10px;">
+    <div class="row">    
+        <div class="col-9">
+            <h4 style="color:rgb(120,120,120)">
+                {{ gig['title'] }}
+            </h4>
+            <div>
+                {{ gig['description'] }}
+            </div>
+            <div>
+                <b>Location:</b> {{ gig['location'] }}
+            </div>
+            
+            {% if 'salary' in gig %}
+            <div>
+                <b>Salary:</b> {{ gig['salary'] }}
+            </div>
+            
+            {% endif %}
+        </div>
+        <div class="col-3">
+            <button type="button" class="btn btn-outline-primary mt-4 mb-4">Apply Now!</button>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,9 @@
-from flask import Flask, render_template
+## Import the Flask class from the flask module
+from flask import Flask, render_template, jsonify
 
 app = Flask(__name__)
 
+## Create a list of dictionaries for test
 GIGS = [
     {
         'id': 1,
@@ -33,15 +35,21 @@ GIGS = [
         'description': 'We are looking for a UAV and unmaned systems pilot to fly our drones.',
         'location': 'Maimi, FL',
         'salary': '$115,000'
-    }
+    }]
 
-]
+## Create a route
+## Create a route for the html pages
 @app.route('/')
-
 def load_homepage():
     return render_template('index.html', 
                            gigs=GIGS,
-                           company_name='DronesTube',)      
+                           company_name='DronesTube',)   
+
+## Create API JSON Endpoints
+@app.route("/api/gigs")
+def list_gigs():
+    return jsonify(GIGS) 
+
 # Run the app
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)  
