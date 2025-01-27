@@ -9,8 +9,14 @@
 <body>
     <!-- Navbar -->
     {% include 'navitems.html' %} <!-- Nav items goes here -->
+
+    <!-- Banner -->
     <img class="img-fluid"  src="../static/banner.jpg" alt="DronesTube Gigs">
+
+    <!-- Main Content -->
     <div class="container">
+    <!-- Cards -->
+        {% include 'carditems.html' %} <!-- Card items goes here -->
         <div>
             <div class="border-bottom" style="margin-bottom: 20px; padding-bottom: 10px;">   
                 <h2 class="text-center mt-4"> Welcome to {{company_name}} Gigs!</h2>
@@ -38,9 +44,7 @@
         </div>
     </div>
     <footer>
-        <div class="container">
-            <p class="text-center"> Copyright © 2025, {{company_name}} Gigs</p>
-        </div>
+        {% include 'footeritems.html' %}
     </footer>
 </body>
 
