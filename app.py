@@ -37,8 +37,8 @@ GIGS = [
         'salary': '$115,000'
     }]
 
-## Create a route
-## Create a route for the html pages
+## Create a routes
+## Route for the html pages
 @app.route('/')
 def load_homepage():
     return render_template('index.html', 
