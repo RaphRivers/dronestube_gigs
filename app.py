@@ -1,55 +1,24 @@
 ## Import the Flask class from the flask module
 from flask import Flask, render_template, jsonify
+from database import load_gigs_from_db # Import load_gigs_from_db function from database.py
 
-app = Flask(__name__)
+app = Flask(__name__) # Create an instance of the Flask class
+    
+# Create route for the html pages and load db objects
+@app.route('/') # Home page route
 
-## Create a list of dictionaries for test
-GIGS = [
-    {
-        'id': 1,
-        'title': 'UAV Pilot',
-        'description': 'We are looking for a UAV pilot to fly our drones.',
-        'location': 'San Francisco, CA',
-        'salary': '$100,000'
-    },
-
-    {
-        'id': 2,
-        'title': 'UAS Engineer 1',
-        'description': 'We are looking for a UAS Engineer to help us build our drones.',
-        'location': 'london, UK',
-        'salary': '$102,000'
-    },
-
-    {
-        'id': 3,
-        'title': 'UAV Pilot Drone Operator',
-        'description': 'We are looking for a UAV pilot to fly our drones.',
-        'location': 'Cape Town, South Africa',
-        'salary': '$95,000'
-    },
-
-    {
-        'id': 4,
-        'title': 'UAV/UAS 107 Pilot',
-        'description': 'We are looking for a UAV and unmaned systems pilot to fly our drones.',
-        'location': 'Maimi, FL',
-        'salary': '$115,000'
-    }]
-
-## Create a routes
-## Route for the html pages
-@app.route('/')
-def load_homepage():
-    return render_template('index.html', 
-                           gigs=GIGS,
-                           company_name='DronesTube',)   
+def load_homepage(): # Load homepage function
+    gigs_list = load_gigs_from_db() # assign variable for db gigs list
+    return render_template('index.html', # Load index.html template
+                        gigs=gigs_list, # Pass gigs list to index.html template
+                        company_name='DronesTube',)  # Pass company name to index.html template 
 
 ## Create API JSON Endpoints
-@app.route("/api/gigs")
-def list_gigs():
-    return jsonify(GIGS) 
+@app.route("/api/gigs") # Create API route for gigs
+def list_gigs(): # Define list gigs function
+    gigs_list = load_gigs_from_db() # Load gigs list from database
+    return jsonify(gigs_list) # Return gigs list in JSON format
 
 # Run the app
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)  
+if __name__ == '__main__': # Check if app.py is run as main program
+    app.run(host='0.0.0.0', debug=True)  # Run app on localhost and debug mode

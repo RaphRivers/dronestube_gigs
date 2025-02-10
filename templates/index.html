@@ -11,7 +11,7 @@
     {% include 'navitems.html' %} <!-- Nav items goes here -->
 
     <!-- Banner -->
-    <img class="img-fluid"  src="../static/banner.jpg" alt="DronesTube Gigs">
+    <img class="img-fluid"  src="../static/banner.jpg" alt="DronesTube Gigs" style="object-fit: cover;">
 
     <!-- Main Content -->
     <div class="container">
@@ -37,7 +37,7 @@
             <div>
                 <div>
                     <h2 class="text-center"> Our Gigs </h2>
-                    <p class="lead" style="text-align: center;"><em>Here you can find the best gigs for your drone.</em></p> 
+                    <p class="lead" style="text-align: center;">Browse gigs for aerial photography, videography, mapping, inspections, and more.</p> 
                 </div>
                 <div> 
                     {% for gig in gigs %}
